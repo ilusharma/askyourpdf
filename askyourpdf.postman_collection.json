@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "b6f7ec51-b385-49e9-94ff-a1c9ec8cd777",
+		"name": "askyourpdf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26389519",
+		"_collection_link": "https://gold-astronaut-795440.postman.co/workspace/Team-Workspace~83127b36-2533-426a-8778-9cf43805e81c/collection/26389519-b6f7ec51-b385-49e9-94ff-a1c9ec8cd777?action=share&source=collection_link&creator=26389519"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://auth-service.askyourpdf.com/create-anon-user",
+					"protocol": "https",
+					"host": [
+						"auth-service",
+						"askyourpdf",
+						"com"
+					],
+					"path": [
+						"create-anon-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chatid",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 6593fd48b8915e8a3f2fb0d8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://chat-api.askyourpdf.com/chat",
+					"protocol": "https",
+					"host": [
+						"chat-api",
+						"askyourpdf",
+						"com"
+					],
+					"path": [
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer 6593fd48b8915e8a3f2fb0d8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://doc-api.askyourpdf.com/api/usage",
+					"protocol": "https",
+					"host": [
+						"doc-api",
+						"askyourpdf",
+						"com"
+					],
+					"path": [
+						"api",
+						"usage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create conversation",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer 6593fd48b8915e8a3f2fb0d8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://chat-api.askyourpdf.com/conversations?page=1&page_size=20&order=desc&",
+					"protocol": "https",
+					"host": [
+						"chat-api",
+						"askyourpdf",
+						"com"
+					],
+					"path": [
+						"conversations"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "20"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "init chat",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer 6593fd48b8915e8a3f2fb0d8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://chat-api.askyourpdf.com/chat/f7524999-60f1-43a1-9ac3-6c210e217d87",
+					"protocol": "https",
+					"host": [
+						"chat-api",
+						"askyourpdf",
+						"com"
+					],
+					"path": [
+						"chat",
+						"f7524999-60f1-43a1-9ac3-6c210e217d87"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "file upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer 6593fd48b8915e8a3f2fb0d8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/apple/Downloads/Attachement 2.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://doc-api.askyourpdf.com/api/upload",
+					"protocol": "https",
+					"host": [
+						"doc-api",
+						"askyourpdf",
+						"com"
+					],
+					"path": [
+						"api",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
