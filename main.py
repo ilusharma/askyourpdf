@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from chatbot import create_user, create_chat_id, check_usage, create_conversation, init_chat, file_upload,chatBot
+from askyourpdf.chatbot import create_user, create_chat_id, check_usage, create_conversation, init_chat, file_upload,chatBot
 from streamlit_javascript import st_javascript
 import json
 
@@ -84,20 +84,11 @@ if recreate_userID:
 file = st.file_uploader("Upload file", type=['pdf'])
 if file is not None:
     file_details = {"FileName":file.name,"FileType":file.type,"FileSize":file.size}
-    data = file_upload(st.session_state.user_id,file)
+    data = file_upload(st.session_state.user_id,file,st.session_state.chat_id)
 
     st.session_state.docId = data
     set_to_local_storage('docId', data)
     st.write('File uploaded successfully and docId is: ', st.session_state.docId)
-
-    #init chat
-    init_chat(st.session_state.user_id, st.session_state.chat_id)
-    print("init chat")
-
-
-    conversation = create_conversation(st.session_state.user_id)
-    print(conversation)
-
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -116,12 +107,8 @@ if file is not None:
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
 
-        #add loader
-
-        print('i am before chat bot')
-
         chat_message = chatBot(st.session_state.user_id, st.session_state.docId, st.session_state.chat_id, prompt)
-        print('i am after chat bot')
+
         response = f"{chat_message}"
         # Display assistant response in chat message container
         with st.chat_message("assistant"):
