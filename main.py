@@ -60,7 +60,7 @@ recreate_userID = recreate_user_id.button("Recreate User ID")
 usage,usage_detail = st.columns(2)
 st.write("User ID: ", st.session_state.user_id)
 
-# usage = usage.button("Usage")
+usage = usage.button("Usage")
 #
 if recreate_userID:
     user = create_user()
@@ -74,10 +74,10 @@ if recreate_userID:
 
 
 #
-# if usage:
-#     usage = check_usage(st.session_state.user_id)
-#     usage = json.loads(usage)
-#     usage_detail.dataframe(usage)
+if usage:
+    usage = check_usage(st.session_state.user_id)
+    usage = json.loads(usage)
+    usage_detail.dataframe(usage)
 
 
 #upload file
