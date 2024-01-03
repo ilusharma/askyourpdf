@@ -37,7 +37,8 @@ def check_usage(user_id):
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    return response.text
+    data = json.loads(response.text)
+    return data
 
 def create_conversation(user_id):
 
@@ -68,7 +69,7 @@ def init_chat(user_id, chat_id):
     return response.text
 
 
-def file_upload(user_id,file):
+def file_upload(user_id,file,chat_id):
     url = "https://doc-api.askyourpdf.com/api/upload"
 
     payload = {}
@@ -84,6 +85,8 @@ def file_upload(user_id,file):
     if response.status_code == 200:
         data = json.loads(response.text)
         fileId = data['docId']
+        init_chat(user_id, chat_id)
+        create_conversation(user_id)
         return fileId
     else:
         return response.text
