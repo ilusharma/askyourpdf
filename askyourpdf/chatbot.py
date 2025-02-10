@@ -108,32 +108,3 @@ def chatBot(user_id,file_id, chat_id, message):
     return response.text
 
 
-
-def main():
-    # Step 1: Create an anonymous user
-    user_id = create_user()
-    print(f"User ID: {user_id}")
-    
-    # Step 2: Create a new chat ID
-    chat_id = create_chat_id(user_id)
-    print(f"Chat ID: {chat_id}")
-    
-    # Step 3: Upload a PDF file
-    pdf_path = "test.pdf"  # Replace with the actual path to your PDF
-    with open(pdf_path, 'rb') as pdf_file:
-        file_id = file_upload(user_id, pdf_file, chat_id)
-    
-    if not isinstance(file_id, str):
-        print("Error in file upload:", file_id)
-        return
-
-    print(f"Uploaded File ID: {file_id}")
-    while True:
-
-    # Step 4: Interact with the chatbot
-        message = input('que') # Replace with your desired input
-        response = chatBot(user_id, file_id, chat_id, message)
-        print("Chatbot Response:", response)
-
-if __name__ == "__main__":
-    main()
